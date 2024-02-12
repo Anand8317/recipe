@@ -105,7 +105,7 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project you can reach me through [@briton_otieno4](https://twitter.com/briton_otieno4) and share more thoughts to help improve
+If you like this project you can reach me through [AnandPathak](https://www.linkedin.com/in/anand-pathak-473611171/) and share more thoughts to help improve
 
 If you like this project, give it a ⭐️.
 
