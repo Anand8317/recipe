@@ -89,6 +89,11 @@ Clone this repository to your desired folder:
 - Twitter: [AnandPathak](https://twitter.com/anand029)
 - LinkedIn: [AnandPathak](https://www.linkedin.com/in/anand-pathak-473611171/)
 
+👤 **Aladdin Alsalem**
+
+- GitHub: [AlaaAlsalem](https://github.com/AlaaAlsalem)
+- LinkedIn: [Aladdin Alsalem](https://www.linkedin.com/in/aladdin-alsalem/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
