@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :culinary_recipes do
+    member do
+      post :add_ingredient
+      get :new_ingredient_form
+    end
+  end
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -7,5 +13,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "rails/health#show"
+  root "culinary_recipes#index"
 end

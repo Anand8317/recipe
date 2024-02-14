@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_13_124331) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_14_130649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "culinary_recipe_foods", id: false, force: :cascade do |t|
+    t.bigint "culinary_recipe_id", null: false
+    t.bigint "food_id", null: false
+    t.integer "quantity"
+    t.index ["culinary_recipe_id"], name: "index_culinary_recipe_foods_on_culinary_recipe_id"
+    t.index ["food_id"], name: "index_culinary_recipe_foods_on_food_id"
+  end
+
+  create_table "culinary_recipes", force: :cascade do |t|
+    t.string "name"
+    t.integer "preparation_time"
+    t.integer "cooking_time"
+    t.text "description"
+    t.boolean "public"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_culinary_recipes_on_user_id"
+  end
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
@@ -41,4 +61,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_13_124331) do
     t.index ["unconfirmed_email"], name: "index_users_on_unconfirmed_email"
   end
 
+  add_foreign_key "culinary_recipes", "users"
 end
