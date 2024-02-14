@@ -1,6 +1,6 @@
 class CulinaryRecipesController < ApplicationController
-  before_action :set_culinary_recipe, only: %i[ show edit update destroy ]
-  before_action :authenticate_user! 
+  before_action :set_culinary_recipe, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   # GET /culinary_recipes or /culinary_recipes.json
   def index
@@ -18,8 +18,7 @@ class CulinaryRecipesController < ApplicationController
   end
 
   # GET /culinary_recipes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /culinary_recipes or /culinary_recipes.json
   def create
@@ -27,7 +26,7 @@ class CulinaryRecipesController < ApplicationController
 
     respond_to do |format|
       if @culinary_recipe.save
-        format.html { redirect_to culinary_recipes_url, notice: "Culinary recipe was successfully created." }
+        format.html { redirect_to culinary_recipes_url, notice: 'Culinary recipe was successfully created.' }
         format.json { render :show, status: :created, location: @culinary_recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +39,7 @@ class CulinaryRecipesController < ApplicationController
   def update
     respond_to do |format|
       if @culinary_recipe.update(culinary_recipe_params)
-        format.html { redirect_to culinary_recipes_url, notice: "Culinary recipe was successfully updated." }
+        format.html { redirect_to culinary_recipes_url, notice: 'Culinary recipe was successfully updated.' }
         format.json { render :show, status: :ok, location: @culinary_recipe }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +53,7 @@ class CulinaryRecipesController < ApplicationController
     @culinary_recipe.destroy!
 
     respond_to do |format|
-      format.html { redirect_to culinary_recipes_url, notice: "Culinary recipe was successfully destroyed." }
+      format.html { redirect_to culinary_recipes_url, notice: 'Culinary recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -62,14 +61,15 @@ class CulinaryRecipesController < ApplicationController
   def add_ingredient
     # Find the recipe by ID
     culinary_recipe = CulinaryRecipe.find(params[:id])
-    
+
     # Create a new Food item or find an existing one
-    food = Food.find_or_create_by(name: params[:name], measurement_unit: params[:measurement_unit], price: params[:price] )
-    
+    food = Food.find_or_create_by(name: params[:name], measurement_unit: params[:measurement_unit],
+                                  price: params[:price])
+
     # Add the food to the recipe with quantity
     # This assumes you have a `quantity` column in the join table
-    culinary_recipe_food = culinary_recipe.culinary_recipe_foods.build(food: food, quantity: params[:quantity])
-    
+    culinary_recipe_food = culinary_recipe.culinary_recipe_foods.build(food:, quantity: params[:quantity])
+
     if culinary_recipe_food.save
       # Successfully added food to recipe
       redirect_to culinary_recipe_path(culinary_recipe), notice: 'Food added successfully.'
@@ -84,13 +84,14 @@ class CulinaryRecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_culinary_recipe
-      @culinary_recipe = CulinaryRecipe.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def culinary_recipe_params
-      params.require(:culinary_recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_culinary_recipe
+    @culinary_recipe = CulinaryRecipe.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def culinary_recipe_params
+    params.require(:culinary_recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
+  end
 end
