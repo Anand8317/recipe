@@ -21,7 +21,12 @@ default: &default
 
 development:
   <<: *default
-  database: recipe_development
+  adapter: postgresql
+  encoding: unicode
+  database: recipeapp_test
+  pool: 5
+  username: postgres
+  password: whisky
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -55,7 +60,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: recipe_test
+  adapter: postgresql
+  encoding: unicode
+  database: recipeapp_test
+  pool: 5
+  username: postgres
+  password: whisky
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
