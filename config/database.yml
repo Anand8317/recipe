@@ -19,7 +19,8 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
-  username: postgres
+  username: anand
+  password: localhost
   port: 5432
   password: 123
 
@@ -28,7 +29,7 @@ development:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>   
   database: recipe_development
   host: localhost
-  username: postgres
+  username: anand
   port: 5432
   password: 123
   # The specified database role being used to connect to PostgreSQL.

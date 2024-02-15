@@ -78,7 +78,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_092458) do
   end
 
   add_foreign_key "culinary_recipes", "users"
-
   add_foreign_key "inventories", "users"
-
 end
