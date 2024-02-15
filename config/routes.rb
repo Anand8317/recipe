@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :culinary_recipes do
+    member do
+      post :add_ingredient
+      get :new_ingredient_form
+      delete :destroy_ingredient
+    end
+  end
 
   resources :inventories, only: [:index, :show, :new, :create, :destroy]
   devise_for :users
@@ -9,5 +16,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "rails/health#show"
+  root "culinary_recipes#index"
 end

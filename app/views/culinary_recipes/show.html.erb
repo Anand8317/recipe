@@ -1,0 +1,48 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <%= form_with(model: @culinary_recipe, local: true) do |form| %>
+  <div class="flex items-center justify-center">
+    <%= form.check_box :public, class: "toggle-checkbox", id: "public-toggle" %>
+    <%= form.label :public, "Public", class: "toggle-label" %>
+  </div>
+<% end %>
+  <div class="mx-auto w-full">
+
+    <%= render @culinary_recipe %>
+
+    <%= link_to "Back to culinary_recipes", culinary_recipes_path, class: "ml-2 mt-10 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <%= link_to 'Generate Shopping List', method: :post, class: "l-2 mt-10 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <%= link_to  'Add New Ingredient', new_ingredient_form_culinary_recipe_path, class: "l-2 mt-10 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+
+    <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="py-3 px-6">Food ID</th>
+        <th scope="col" class="py-3 px-6">Quantity</th>
+        <th scope="col" class="py-3 px-6">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @culinary_recipe_foods.each do |crf| %>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <td class="py-4 px-6"><%= crf.name %></td>
+          <td class="py-4 px-6"><%= crf.quantity %></td>
+          <td class="py-4 px-6">
+              <%= button_to 'Delete Ingredient', destroy_ingredient_culinary_recipe_path(@culinary_recipe, culinary_recipe_food_id: crf.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+  </div>
+
+  
+
+
+</div>

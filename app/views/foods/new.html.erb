@@ -1,0 +1,18 @@
+<%= form_with url: "/foods/create_food_linked_with_inventory", method: :post, local: true do |form| %>
+    <%= form.hidden_field :inventory_id, value: @inventory_id %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="field">
+      <%= form.label :measurement_unit %>
+      <%= form.number_field :measurement_unit %>
+    </div>
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.number_field :price %>
+    </div>
+    <div class="actions">
+      <%= form.submit "Add Food" %>
+    </div>
+<% end %>
