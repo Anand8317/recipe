@@ -1,4 +1,14 @@
-<div>
-  <h1 class="font-bold text-4xl">Inventories#new</h1>
-  <p>Find me in app/views/inventories/new.html.erb</p>
-</div>
+<h1>New Inventory</h1>
+
+<%= form_with(model: @inventory, url: inventories_path) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+
+
+  <%= form.submit "Create Inventory" %>
+<% end %>
+
+<%= link_to "Back to Inventories", inventories_path %>
