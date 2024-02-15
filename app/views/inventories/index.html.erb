@@ -3,7 +3,7 @@
 <% @inventories.each do |inventory| %>
   <div>
     <%= link_to inventory.name, inventory %>
-    <%= link_to "Delete", inventory, method: :delete, data: { confirm: "Are you sure you want to delete this inventory?" } %>
+    <%= button_to "Delete", inventory, method: :delete, data: { confirm: "Are you sure you want to delete this inventory?" } %>
   </div>
 <% end %>
 
