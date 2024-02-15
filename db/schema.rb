@@ -42,6 +42,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_092458) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "foods_inventories", id: false, force: :cascade do |t|
+    t.bigint "food_id", null: false
+    t.bigint "inventory_id", null: false
+    t.integer "quantity", default: 1
+    t.index ["food_id", "inventory_id"], name: "index_foods_inventories_on_food_id_and_inventory_id"
+    t.index ["inventory_id", "food_id"], name: "index_foods_inventories_on_inventory_id_and_food_id"
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_inventories_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,4 +78,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_092458) do
   end
 
   add_foreign_key "culinary_recipes", "users"
+
+  add_foreign_key "inventories", "users"
+
 end
