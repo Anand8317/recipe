@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_14_130649) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_15_092458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "culinary_recipe_foods", id: false, force: :cascade do |t|
+  create_table "culinary_recipe_foods", force: :cascade do |t|
     t.bigint "culinary_recipe_id", null: false
     t.bigint "food_id", null: false
     t.integer "quantity"

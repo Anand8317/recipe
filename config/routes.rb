@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       post :add_ingredient
       get :new_ingredient_form
+      delete :destroy_ingredient
     end
   end
   devise_for :users

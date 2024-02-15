@@ -1,5 +1,5 @@
 class CulinaryRecipesController < ApplicationController
-  before_action :set_culinary_recipe, only: %i[show edit update destroy]
+  before_action :set_culinary_recipe, only: %i[show edit update destroy destroy_ingredient]
   before_action :authenticate_user!
 
   # GET /culinary_recipes or /culinary_recipes.json
@@ -9,7 +9,7 @@ class CulinaryRecipesController < ApplicationController
 
   # GET /culinary_recipes/1 or /culinary_recipes/1.json
   def show
-    @culinary_recipe_foods = @culinary_recipe.foods
+    @culinary_recipe_foods = @culinary_recipe.foods.select('foods.*, culinary_recipe_foods.quantity')
   end
 
   # GET /culinary_recipes/new
@@ -76,6 +76,15 @@ class CulinaryRecipesController < ApplicationController
     else
       # Handle errors, e.g., render the form again with error messages
       render new_ingredient_form, alert: 'Error adding food to recipe.'
+    end
+  end
+
+  def destroy_ingredient
+    @culinary_recipe_food = @culinary_recipe.culinary_recipe_foods.find(params[:culinary_recipe_food_id])
+    @culinary_recipe_food.destroy
+    respond_to do |format|
+      format.html { redirect_to culinary_recipe_path(@culinary_recipe), notice: 'Ingredient was successfully removed.' }
+      format.json { head :no_content }
     end
   end
 
