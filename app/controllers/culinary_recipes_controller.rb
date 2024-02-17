@@ -1,6 +1,11 @@
 class CulinaryRecipesController < ApplicationController
   before_action :set_culinary_recipe, only: %i[show edit update destroy destroy_ingredient]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[public_recipes show]
+
+  before_action :set_ability
+  def set_ability
+    @ability = Ability.new(current_user)
+  end
 
   # GET /culinary_recipes or /culinary_recipes.json
   def index
@@ -86,6 +91,10 @@ class CulinaryRecipesController < ApplicationController
       format.html { redirect_to culinary_recipe_path(@culinary_recipe), notice: 'Ingredient was successfully removed.' }
       format.json { head :no_content }
     end
+  end
+
+  def public_recipes
+    @recipes = Recipe.includes(:culinary_recipe_foods, culinary_recipe_foods: :food).where(public: true)
   end
 
   def new_ingredient_form
