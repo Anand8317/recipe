@@ -64,11 +64,6 @@
   color: white;
 }
 
-
-
-
-
-
 /* ---- Public Recipes ---- */
 .public-recipes {
   display: flex;
@@ -157,7 +152,7 @@
 
 /* ----Shopping List ---- */
 
-.shopping-list {
+.shopping-list {  
   display: flex;
   flex-direction: column;
   align-items: center;
