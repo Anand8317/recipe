@@ -18,7 +18,7 @@ RSpec.describe InventoryFood, type: :model do
     foods_inventory = FactoryBot.build(:foods_inventory, quantity: -1)
     expect(foods_inventory).to_not be_valid
 
-    foods_inventory = FactoryBot.build(:foods_inventory, quantity: 5) 
+    foods_inventory = FactoryBot.build(:foods_inventory, quantity: 5)
     expect(foods_inventory).to be_valid
   end
 
