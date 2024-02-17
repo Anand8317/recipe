@@ -1,35 +1,40 @@
 class InventoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_ability
+
+  def set_ability
+    @ability = Ability.new(current_user)
+  end
+
+  def new; end
+
   def index
-    @inventories = current_user.inventories
+    @inventories = Inventory.where(user_id: current_user.id)
   end
 
   def show
-    @inventory = current_user.inventories.find(params[:id])
-  end
-
-  def new
-    @inventory = Inventory.new
-  end
-
-  def create
-    @inventory = current_user.inventories.build(inventory_params)
-    if @inventory.save
-      redirect_to @inventory, notice: 'Inventory was successfully created.'
-    else
-      render :new
-    end
+    @inventory = Inventory.includes(foods_inventories: :food).find(params[:id])
   end
 
   def destroy
-    @inventory = current_user.inventories.find(params[:id])
-    @inventory.destroy
-    redirect_to inventories_url, notice: 'Inventory was successfully deleted.'
+    Inventory.find(params[:id]).destroy
+    redirect_to inventories_path, notice: 'Inventory deleted'
+  end
+
+  def create
+    @inventory = Inventory.new(inventory_params)
+    @inventory.user_id = current_user.id
+
+    if @inventory.save
+      redirect_to inventories_path, notice: 'Inventory successfully added'
+    else
+      render :new, notice: 'Failed'
+    end
   end
 
   private
 
   def inventory_params
-    params.require(:inventory).permit(:name, :description)
+    params.permit(:name, :description)
   end
 end

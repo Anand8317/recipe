@@ -3,6 +3,6 @@ class Inventory < ApplicationRecord
   validates :description, presence: true
 
   belongs_to :user, foreign_key: 'user_id'
-  has_many :inventory_foods
-  has_many :foods, through: :inventory_foods
+  has_many :foods_inventories
+  has_many :foods, through: :foods_inventories
 end
