@@ -6,6 +6,7 @@ class CulinaryRecipesController < ApplicationController
   def set_ability
     @ability = Ability.new(current_user)
   end
+
   # GET /culinary_recipes or /culinary_recipes.json
   def index
     @culinary_recipes = current_user.culinary_recipes
