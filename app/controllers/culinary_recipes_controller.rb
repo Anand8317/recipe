@@ -94,7 +94,7 @@ class CulinaryRecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipes = Recipe.includes(:culinary_recipe_foods, culinary_recipe_foods: :food).where(public: true)
+    @recipes = CulinaryRecipe.includes(:culinary_recipe_foods, culinary_recipe_foods: :food).where(public: true)
   end
 
   def new_ingredient_form
