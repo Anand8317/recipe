@@ -1,0 +1,17 @@
+<div id="<%= dom_id culinary_recipe %>">
+  <%= link_to culinary_recipe do %>
+  <div class="w-1/1 bg-gray-200 rounded-lg shadow-md mt-6 overflow-hidden">
+    <div class="p-4">
+      <h2 class="text-xl font-bold mb-2"><%= culinary_recipe.name %></h2>
+      <div class="mb-4">
+        <span class="text-gray-700"><strong>Cooking Time:</strong> <%= culinary_recipe.cooking_time %></span>
+      </div>
+      <div class="mb-4">
+        <span class="text-gray-700"><strong>Preparation Time:</strong> <%= culinary_recipe.preparation_time %></span>
+      </div>
+      <p class="text-gray-600 mb-4"><%= culinary_recipe.description %></p>
+      <% end %>
+        <%= button_to "Remove", culinary_recipe_path(culinary_recipe), method: :delete, class: "inline-block bg-red-500 text-white p-2 rounded hover:bg-red-700" %>
+    </div>
+  </div>
+</div>
