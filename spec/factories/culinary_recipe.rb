@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :culinary_recipe do
+  factory :CulinaryRecipe do
     name { 'Sample Recipe' }
     user
   end
