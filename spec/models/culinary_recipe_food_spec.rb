@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RecipeFood, type: :model do
+RSpec.describe culinary_recipe_food, type: :model do
   it 'has a valid factory' do
     culinary_recipe_food = FactoryBot.build(:culinary_recipe_food)
     expect(culinary_recipe_food).to be_valid
@@ -20,12 +20,12 @@ RSpec.describe RecipeFood, type: :model do
   end
 
   it 'belongs to a recipe' do
-    recipe_association = RecipeFood.reflect_on_association(:recipe)
+    recipe_association = culinary_recipe_food.reflect_on_association(:recipe)
     expect(recipe_association.macro).to eq(:belongs_to)
   end
 
   it 'belongs to a food' do
-    food_association = RecipeFood.reflect_on_association(:food)
+    food_association = culinary_recipe_food.reflect_on_association(:food)
     expect(food_association.macro).to eq(:belongs_to)
   end
 end
