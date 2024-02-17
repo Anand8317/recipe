@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InventoryFood, type: :model do
+RSpec.describe FoodsInventory, type: :model do
   it 'has a valid factory' do
     foods_inventory = FactoryBot.build(:foods_inventory)
     expect(foods_inventory).to be_valid
@@ -23,12 +23,12 @@ RSpec.describe InventoryFood, type: :model do
   end
 
   it 'belongs to an inventory' do
-    inventory_association = InventoryFood.reflect_on_association(:inventory)
+    inventory_association = FoodsInventory.reflect_on_association(:inventory)
     expect(inventory_association.macro).to eq(:belongs_to)
   end
 
   it 'belongs to a food' do
-    food_association = InventoryFood.reflect_on_association(:food)
+    food_association = FoodsInventory.reflect_on_association(:food)
     expect(food_association.macro).to eq(:belongs_to)
   end
 end

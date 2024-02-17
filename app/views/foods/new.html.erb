@@ -1,18 +1,25 @@
-<%= form_with url: "/foods/create_food_linked_with_inventory", method: :post, local: true do |form| %>
+<div class="bg-white p-6 rounded-lg shadow-md mt-4">
+  <h1 class="text-3xl font-semibold mb-5 flex justify-center">Add Food</h1>
+
+
+
+  <%= form_with url: "/foods/create_food_linked_with_inventory", method: :post, local: true do |form| %>
     <%= form.hidden_field :inventory_id, value: @inventory_id %>
-    <div class="field">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+        <div class="space-y-4">
+      <div class="flex flex-col">
+        <%= form.label :name, class: "text-lg font-medium text-gray-600 mb-2" %>
+          <%= form.text_field :name, class: "w-full p-3 rounded-lg border border-gray-300" %>
+      </div>
+      <div class="flex flex-col">
+        <%= form.label :measurement_unit, class: "text-lg font-medium text-gray-600 mb-2" %>
+          <%= form.text_field :measurement_unit, class: "w-full p-3 rounded-lg border border-gray-300" %>
+      </div>
+      <div class="flex flex-col">
+        <%= form.label :price, class: "text-lg font-medium text-gray-600 mb-2" %>
+          <%= form.text_field :price, class: "w-full p-3 rounded-lg border border-gray-300" %>
+      </div>
+      <%= form.submit "Add Food" ,
+        class: "mt-5 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg" %>
     </div>
-    <div class="field">
-      <%= form.label :measurement_unit %>
-      <%= form.number_field :measurement_unit %>
-    </div>
-    <div class="field">
-      <%= form.label :price %>
-      <%= form.number_field :price %>
-    </div>
-    <div class="actions">
-      <%= form.submit "Add Food" %>
-    </div>
-<% end %>
+    <% end %>
+</div>
