@@ -150,9 +150,7 @@
   width: 50%;
 }
 
-/* ----Shopping List ---- */
-
-.shopping-list {  
+.shopping-list {
   display: flex;
   flex-direction: column;
   align-items: center;
